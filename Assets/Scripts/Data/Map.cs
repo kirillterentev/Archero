@@ -3,7 +3,7 @@
 [CreateAssetMenu(fileName = "Map", menuName = "Map")]
 public class Map : ScriptableObject
 {
-	public float width;
-	public float height;
-	public byte[,] matrix;
+	public int width;
+	public int height;
+	public int[] matrix = new int[1];
 }

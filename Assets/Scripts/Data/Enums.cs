@@ -15,3 +15,10 @@ public enum EnemyType
 	Flying,
 	Shooting
 }
+
+public enum CellType
+{
+	Floor,
+	Border,
+	Water
+}
