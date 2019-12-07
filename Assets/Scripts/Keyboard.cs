@@ -26,6 +26,11 @@ public class Keyboard : MonoBehaviour, Joystick
 			_inUse = false;
 		}
 
+		if (_checkFrame)
+		{
+			_checkFrame = false;
+		}
+
 		var horizontalAxis = Input.GetAxis("Horizontal");
 		var verticalAxis = Input.GetAxis("Vertical");
 		_direction.x = horizontalAxis;
@@ -34,14 +39,7 @@ public class Keyboard : MonoBehaviour, Joystick
 		if (_inUse && _direction == Vector2.zero && !_checkFrame)
 		{
 			_checkFrame = true;
-			_direction.x = 0;
-			_direction.y = 0.1f;
 			return _previousDirection.normalized;
-		}
-
-		if (!_inUse && _checkFrame)
-		{
-			_checkFrame = false;
 		}
 
 		return _direction.normalized;
