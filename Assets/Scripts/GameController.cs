@@ -3,7 +3,8 @@
 public class GameController : MonoBehaviour
 {
 	public SaveLoader SaveLoader;
-	public UIController UIController;
+
+	private CameraControl _cameraControl;
 
 	public GamePerson Player;
 
@@ -20,18 +21,19 @@ public class GameController : MonoBehaviour
 		}
 	}
 
-	private void Awake()
-	{
-
-	}
-
 	private void Start()
 	{
-
+		_cameraControl = (CameraControl) StaticContainer.Get(typeof(CameraControl));
+		_cameraControl.SetTarget(Player.transform);
 	}
 
 	private void Update()
 	{
 		Player.UpdateState();
+	}
+
+	private void LateUpdate()
+	{
+		_cameraControl.UpdatePosition();
 	}
 }
