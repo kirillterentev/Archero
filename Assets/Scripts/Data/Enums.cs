@@ -22,3 +22,8 @@ public enum CellType
 	Border,
 	Water
 }
+
+public enum AnimationType
+{
+	Run
+}

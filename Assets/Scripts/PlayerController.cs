@@ -4,13 +4,15 @@ using System.Collections;
 public class PlayerController : GamePerson, IMovable
 {
 	private Joystick _inputController;
+	private IAnimator _animator;
 	private Rigidbody _rb;
+
 	private Vector3 _direction = Vector3.zero;
 
 	private void Start()
 	{
 		_inputController = (Joystick)StaticContainer.Get(typeof(Joystick));
-
+		_animator = GetComponent<IAnimator>();
 		_rb = GetComponent<Rigidbody>();
 	}
 
@@ -23,16 +25,20 @@ public class PlayerController : GamePerson, IMovable
 	public void Move(Vector2 direction)
 	{
 		_rb.velocity = Vector3.zero;
-		
+
+		if (direction == Vector2.zero)
+		{
+			_animator.SetParameterBool(AnimationType.Run, false);
+			return;
+		}
+
 		_direction.x = direction.x;
 		_direction.z = direction.y;
 
-		if (_direction != Vector3.zero)
-		{
-			Quaternion lookRotation = Quaternion.LookRotation(_direction);
-			_rb.rotation = lookRotation;
-		}
+		Quaternion lookRotation = Quaternion.LookRotation(_direction);
+		_rb.rotation = lookRotation;
 
 		_rb.AddForce(_direction, ForceMode.VelocityChange);
+		_animator.SetParameterBool(AnimationType.Run, true);
 	}
 }

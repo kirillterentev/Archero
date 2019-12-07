@@ -5,6 +5,8 @@ public class GameController : MonoBehaviour
 	public SaveLoader SaveLoader;
 	public UIController UIController;
 
+	public GamePerson Player;
+
 	public GameData GameData
 	{
 		get
@@ -20,11 +22,16 @@ public class GameController : MonoBehaviour
 
 	private void Awake()
 	{
-		UIController = GetComponent<UIController>();
+
 	}
 
 	private void Start()
 	{
-		UIController.ShowWindow(GameWindow.MainMenu);
+
+	}
+
+	private void Update()
+	{
+		Player.UpdateState();
 	}
 }
