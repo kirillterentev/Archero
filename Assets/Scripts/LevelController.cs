@@ -15,9 +15,11 @@ public class LevelController : MonoBehaviour, MapBuilder, SpawnController
 	[SerializeField] private List<Cell> _cells;
 	[SerializeField] private List<Map> _maps;
 
+
+
 	void Start()
 	{
-		BuildMap();
+		//BuildMap();
 	}
 
 	public void BuildMap()

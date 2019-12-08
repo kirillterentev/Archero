@@ -1,6 +1,7 @@
 ﻿
 public enum GamePersonState
 {
+	Idle,
 	Move,
 	Attack
 }
@@ -25,5 +26,8 @@ public enum CellType
 
 public enum AnimationType
 {
-	Run
+	Idle,
+	Run,
+	Aim,
+	Shoot
 }

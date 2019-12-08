@@ -8,7 +8,10 @@ public class PlayerAnimator : MonoBehaviour, IAnimator
 
 	private Dictionary<AnimationType, int> _animations = new Dictionary<AnimationType, int>()
 	{
+		{AnimationType.Idle, Animator.StringToHash("IsIdle")},
 		{AnimationType.Run, Animator.StringToHash("IsRun")},
+		{AnimationType.Aim, Animator.StringToHash("IsAim")},
+		{AnimationType.Shoot, Animator.StringToHash("IsShoot")},
 	};
 
 	public void SetParameterInt(AnimationType type, int value)

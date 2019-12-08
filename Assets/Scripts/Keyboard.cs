@@ -44,4 +44,9 @@ public class Keyboard : MonoBehaviour, Joystick
 
 		return _direction.normalized;
 	}
+
+	public bool IsDown()
+	{
+		return Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0;
+	}
 }
