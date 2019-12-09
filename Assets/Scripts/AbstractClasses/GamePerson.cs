@@ -1,15 +1,25 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+[Serializable]
+public class PersonState
+{
+	public GamePersonState Name;
+	public AbstractState State;
+}
 
 public abstract class GamePerson : MonoBehaviour
 {
-	protected GamePersonState _currentState;
+	[SerializeField]
+	protected List<PersonState> _states;
+	[SerializeField]
 	protected Transform _transform;
+	[SerializeField]
+	protected Rigidbody _rb;
 
-	private void Awake()
-	{
-		_transform = transform;
-	}
-
+	protected PersonState _currentState;
+	
 	public Vector3 GetPosition()
 	{
 		return _transform.position;
@@ -17,10 +27,27 @@ public abstract class GamePerson : MonoBehaviour
 
 	public virtual void UpdateState()
 	{
-		Debug.Log("This is basic class!");
+		switch (_currentState.Name)
+		{
+			case GamePersonState.Idle:
+				_rb.isKinematic = true;
+				break;
+
+			case GamePersonState.Move:
+				_rb.isKinematic = false;
+				break;
+
+			case GamePersonState.Attack:
+				_rb.isKinematic = true;
+				break;
+
+			default: return;
+		}
+
+		_currentState.State.Action();
 	}
 
-	protected void SetState(GamePersonState newState)
+	protected virtual void SetState(PersonState newState)
 	{
 		if (_currentState == newState)
 		{
