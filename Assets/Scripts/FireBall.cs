@@ -2,22 +2,21 @@
 
 public class FireBall : AbstractShell
 {
-	private bool _isFire = false;
 	private Vector3 _target;
 
 	public override void Shoot(Vector3 target)
 	{
 		_target = target;
-		_isFire = true;
+		_rb.AddForce((_target - transform.position).normalized * 10, ForceMode.VelocityChange);
 	}
 
-	private void Update()
+	private void OnCollisionEnter(Collision other)
 	{
-		if (!_isFire)
+		if (other.gameObject.layer != LayerMask.NameToLayer("Enemy"))
 		{
 			return;
 		}
 
-		transform.Translate((_target - transform.position).normalized * 0.5f);
+		Destroy(this.gameObject);
 	}
 }

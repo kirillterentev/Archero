@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemyData", menuName = "EnemyData")]
-public class EnemyData : ScriptableObject
+public class EnemyData : MonoBehaviour
 {
 	public EnemyType type;
 	public float speed;

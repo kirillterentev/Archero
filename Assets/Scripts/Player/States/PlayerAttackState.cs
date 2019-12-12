@@ -29,7 +29,7 @@ public class PlayerAttackState : AbstractState
 			_animator.SetParameterBool(AnimationType.Aim, true);
 
 			_timer += Time.deltaTime;
-			if (_timer > 1)
+			if (_timer > 1.5f)
 			{
 				_animator.SetParameterTrigger(AnimationType.Shoot, true);
 				_weapon.Shoot(target.position);

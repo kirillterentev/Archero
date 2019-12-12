@@ -5,7 +5,7 @@ public class Rifle : AbstractWeapon
 {
 	public override void Shoot(Vector3 target)
 	{
-		_shell = Instantiate(_shell.gameObject, _shootPoint.position, Quaternion.identity).GetComponent<AbstractShell>();
+		Instantiate<AbstractShell>(_shell, _shootPoint.position, Quaternion.identity).Shoot(target);
 		_shell.Shoot(target);
 	}
 }
