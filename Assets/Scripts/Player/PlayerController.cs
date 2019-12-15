@@ -42,7 +42,7 @@ public class PlayerController : GamePerson, IDamageble
 		base.UpdateState();
 	}
 
-	protected override void SetState(PersonState newState)
+	public override void SetState(PersonState newState)
 	{
 		base.SetState(newState);
 

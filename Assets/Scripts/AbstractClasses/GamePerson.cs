@@ -47,7 +47,7 @@ public abstract class GamePerson : MonoBehaviour
 		_currentState.State.Action();
 	}
 
-	protected virtual void SetState(PersonState newState)
+	public virtual void SetState(PersonState newState)
 	{
 		if (_currentState == newState)
 		{

@@ -37,6 +37,11 @@ public class GameController : MonoBehaviour, AimingController
 		_cameraControl.SetTarget(_player.transform);
 	}
 
+	public Transform GetMainPlayer()
+	{
+		return _player.transform;
+	}
+
 	public Transform GetTarget()
 	{
 		if (_enemies.Count == 0)
@@ -63,6 +68,11 @@ public class GameController : MonoBehaviour, AimingController
 	private void Update()
 	{
 		_player.UpdateState();
+
+		foreach (var enemy in _enemies)
+		{
+			enemy.UpdateState();
+		}
 	}
 
 	private void LateUpdate()
